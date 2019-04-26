@@ -1,0 +1,36 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: a2d14e7c6ce9d31b379bf4c945e798fd26fb7f5ad1a141f12db90d3d7a29afee
+
+name:           phone-number
+version:        1.6.1.8
+build-type:     Simple
+
+library
+  exposed-modules:
+      Phone
+  other-modules:
+      Paths_phone_number
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      base
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: Tests.hs
+  other-modules:
+      Paths_phone_number
+  hs-source-dirs:
+      test
+  build-depends:
+      base
+    , hspec
+    , phone-number
+  default-language: Haskell2010
