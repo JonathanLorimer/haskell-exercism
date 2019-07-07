@@ -11,7 +11,7 @@ data Color =
   | Violet
   | Grey
   | White
-  deriving (Eq, Show, Read)
+  deriving (Eq, Show, Read, Enum)
 
 value :: [Color] -> Int
-value cs = error "You need to implement this function."
+value = read . concat . map (show . fromEnum)

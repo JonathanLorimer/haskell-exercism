@@ -1,0 +1,36 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 2edba1dfb6375b4e5663968d864fbbacf7f281c1cbbecf4e93dab23668c6e900
+
+name:           resistor-color-duo
+version:        2.0.0.1
+build-type:     Simple
+
+library
+  exposed-modules:
+      ResistorColors
+  other-modules:
+      Paths_resistor_color_duo
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      base
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: Tests.hs
+  other-modules:
+      Paths_resistor_color_duo
+  hs-source-dirs:
+      test
+  build-depends:
+      base
+    , hspec
+    , resistor-color-duo
+  default-language: Haskell2010
