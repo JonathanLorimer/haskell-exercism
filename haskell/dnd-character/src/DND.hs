@@ -1,10 +1,11 @@
 module DND ( Character(..)
            , ability
            , modifier
-          --  , character
+           , character
            ) where
 
-import Test.QuickCheck (Gen, choose)
+import Test.QuickCheck (Gen, choose, vectorOf)
+import Data.List (delete)
 
 data Character = Character
   { strength     :: Int
@@ -21,10 +22,18 @@ modifier :: Int -> Int
 modifier con = (con - 10) `div` 2
 
 ability :: Gen Int
-ability = choose (1, 6)
+ability = fmap (sum . (\xs -> delete (minimum xs) xs)) . vectorOf 4 $ choose (1, 6)
 
 character :: Gen Character
-character = Character strength dexterity constitution intelligence wisdom charisma hitpoints
+character =  calculateHitpoints
+         <$> (Character 
+         <$> strength
+         <*> dexterity
+         <*> constitution
+         <*> intelligence
+         <*> wisdom
+         <*> charisma
+         <*> pure 0)
   where
     strength     = ability
     dexterity    = ability
@@ -32,4 +41,6 @@ character = Character strength dexterity constitution intelligence wisdom charis
     intelligence = ability
     wisdom       = ability
     charisma     = ability
-    hitpoints    = modifier constitution
+
+calculateHitpoints :: Character -> Character
+calculateHitpoints char = char { hitpoints = 10 + (modifier (constitution char)) }
