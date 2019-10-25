@@ -18,5 +18,3 @@ triangleType a b c
   where
     tIneq [x, y, z] = x + y < z
     tIneq _         = error "impossible"
-
--- $> (\[x, y, z] -> x + y > z) [2, 3, 7]
