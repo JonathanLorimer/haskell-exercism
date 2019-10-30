@@ -17,5 +17,3 @@ isValid n = all isDigit clean
 
 modProd :: Int -> Int -> Int -> Int
 modProd d m v = if v == d then v else m * v `mod` d
-
--- $> isValid "055 444 285"
