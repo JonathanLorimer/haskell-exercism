@@ -42,6 +42,17 @@ insert a (Node b l r) =
 singleton :: a -> BST a
 singleton a = Node a empty empty
 
+-- toList :: BST a -> [a]
+-- toList Empty = []
+-- toList (Node a l r) = toList l <> [a] <> toList r
+
 toList :: BST a -> [a]
-toList Empty = []
-toList (Node a l r) = toList l <> [a] <> toList r
+toList = go []
+  where
+    go :: [a] -> BST a -> [a]
+    go xs Empty = xs
+    go xs (Node a Empty Empty) = a:xs
+    go xs (Node a l     Empty) = go (a:xs) l
+    go xs (Node a Empty r    ) = a : go xs r
+    go xs (Node a l     r    ) = go (a : go xs r) l
+
