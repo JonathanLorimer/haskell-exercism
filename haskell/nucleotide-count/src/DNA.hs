@@ -1,21 +1,22 @@
+{-# LANGUAGE TupleSections #-}
+
 module DNA (nucleotideCounts, Nucleotide(..)) where
 
-import Data.Map (Map, fromList, adjust)
-import Control.Monad (foldM)
+import Data.Map (Map, adjust, fromList)
 
 data Nucleotide = A | C | G | T
-  deriving (Eq, Ord, Show)
+  deriving (Eq, Ord, Enum, Bounded, Show)
 
 nucleotideCounts :: String
                  -> Either String (Map Nucleotide Int)
-nucleotideCounts =
-  foldM parse (fromList [(A, 0), (C, 0), (G, 0), (T,0)])
+nucleotideCounts s = foldr (adjust (+1)) zero <$> traverse parse s
+  where
+    zero = fromList $ (,0) <$> [minBound ..]
 
-parse :: Map Nucleotide Int
-      -> Char
-      -> Either String (Map Nucleotide Int)
-parse m 'A' = Right $ adjust (+ 1) A m
-parse m 'C' = Right $ adjust (+ 1) C m
-parse m 'G' = Right $ adjust (+ 1) G m
-parse m 'T' = Right $ adjust (+ 1) T m
-parse _  _  = Left "invalid char"
+parse :: Char
+      -> Either String Nucleotide
+parse 'A' = Right A
+parse 'C' = Right C
+parse 'G' = Right G
+parse 'T' = Right T
+parse  _  = Left "invalid char"
