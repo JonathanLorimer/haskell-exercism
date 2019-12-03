@@ -1,9 +1,10 @@
 module SumOfMultiples (sumOfMultiples) where
 
-import Data.List
+import Data.Set as S
+import Data.Foldable
 
 sumOfMultiples :: [Integer] -> Integer -> Integer
-sumOfMultiples fact lim = sum . nub . takeWhile (< lim) . sort $ mults
-  where mults = (*) <$> [1..lim] <*> fact
+sumOfMultiples fact lim = S.foldl' (+) 0 . S.filter (< lim) $ mults
+  where mults = fromList $ (*) <$> [1..lim] <*> fact
 
 
