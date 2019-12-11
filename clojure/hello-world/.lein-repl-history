@@ -1,0 +1,9 @@
+"hello"
+(defn hello [] ;; <- arglist goes here
+  3   ("Hello, World!")
+  4 )
+hello
+(hello)()
+(hello
+)
+:q

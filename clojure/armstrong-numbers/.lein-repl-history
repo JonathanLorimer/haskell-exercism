@@ -1,0 +1,87 @@
+(defn digits [n]
+  (if (zero? n) nil
+    (concat
+      (digits (/ n 10))
+      (list* (rem n 10))
+    )
+  )
+)
+digits 1
+(digits 3232)
+:q
+(defn digits [n]
+  (if (zero? n) nil
+    (concat
+      (digits (/ n 10))
+      (list* (rem n 10))
+    )
+  )
+)
+:wq
+(load-file "armstrong_numbers.clj")
+(load-file "./armstrong_numbers.clj")
+(load-file armstrong_numbers.clj)
+(load-file 'armstrong_numbers.clj')
+(load-file "armstrong_numbers.clj")
+(:require [clojure.math.numeric-tower :as math])
+math/floor 1.5
+(require '[clojure.math.numeric-tower :as math])
+math/floor 1.5
+(math/floor 1.5)
+(math/round 1.5)
+(math/round (math/floor 1.5))
+:q
+(require '[clojure.math.numeric-tower :as math])
+(require 'armstrong-numbers)
+digits
+(digits 123)
+(exp 2 3)
+(require '[armstrong-numbers :as an])
+an/digits
+(an/digits 123)
+(an/exp 2 3)
+(an/exp 3 3)
+:reload-all
+(an/digits 123)
+:reload-all
+(an/digits 123)
+:reload-all
+(an/digits 123)
+:q
+(require '[armstrong-numbers :as an])
+(require 'armstrong-numbers)
+(digits 123)
+(require '[armstrong-numbers :as an])
+armstrong-numbers/digits
+(require '[armstrong-numbers :as an])
+:reload-all
+(require '[armstrong-numbers :as an])
+(require '[armstrong-numbers])
+armstrong-numbers
+(use 'armstrong-numbers)
+(load-file "src/armstrong_numbers.clj")
+(use 'armstrong-numbers)
+digits
+(digits 123)
+(digits 1234)
+(armstrong? 9)
+(count (digits 9))
+(map (partial exp (count (digits 9)) (digits 9)))
+(partial exp 1) 9
+((partial exp 1) 9)
+((partial exp 9) 2)
+((partial exp 9) 1)
+exp 9 1
+(exp 9 1)
+(((partial exp) 9) 1)
+((partial exp 9) 1)
+((partial exp 1) 9)
+(exp 1 9)
+:reload-all
+(exp 1 9)
+(load-file "src/armstrong_numbers.clj")
+(use 'armstrong-numbers)
+exp 1 9
+(exp 1 9)
+armstrong? 9
+(armstrong? 9)
