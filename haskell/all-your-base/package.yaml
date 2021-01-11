@@ -3,6 +3,7 @@ version: 2.3.0.8
 
 dependencies:
   - base
+  - either
 
 library:
   exposed-modules: Base
